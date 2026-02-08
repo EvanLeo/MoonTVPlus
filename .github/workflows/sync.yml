@@ -14,7 +14,7 @@ jobs:
       - name: Sync upstream
         uses: ahmadjn/fork-sync-action@v1
         with:
-          upstream_sync_repo: <上游用户名>/<上游仓库名>
+          upstream_sync_repo: mtvpls/MoonTVPlus
           upstream_sync_branch: main
           target_sync_branch: main
           upstream_pull_args: --allow-unrelated-histories
