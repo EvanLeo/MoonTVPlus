@@ -1,0 +1,21 @@
+name: Sync Fork
+on:
+  schedule:
+    - cron: '0 */3 * * *' # 每3小时触发一次
+  push: # 也可以在 push 时触发，方便测试
+    branches:
+      - main
+jobs:
+  repo-sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout target repo
+        uses: actions/checkout@v2
+      - name: Sync upstream
+        uses: ahmadjn/fork-sync-action@v1
+        with:
+          upstream_sync_repo: <上游用户名>/<上游仓库名>
+          upstream_sync_branch: main
+          target_sync_branch: main
+          upstream_pull_args: --allow-unrelated-histories
+          token: ${{ secrets.GITHUB_TOKEN }}
